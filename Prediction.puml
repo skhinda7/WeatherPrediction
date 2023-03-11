@@ -23,6 +23,7 @@ class FileManager {
     -fileName: String
     -oldMaxTemp: double[]
     -oldMinTemp: double[]
+    -testMethod(): void
 }
 
 FileManager o-- Controller
