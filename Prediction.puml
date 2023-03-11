@@ -1,0 +1,31 @@
+@startuml "Prediction Model"
+
+class Controller {
+    +main(String[] args): void
+    +readFromFile(): 
+}
+
+class GenericPredictor {
+    -oldMinTemp: double[]
+    -oldMaxTemp: double[]
+    #predictFutureTemp(numOfDays, isMax): double[]
+}
+
+class LinearRegressionPredictor extends GenericPredictor {
+    #predictFutureTemp(numOfDays, isMax): double[]
+}
+
+class DecisionTreePredictor extends GenericPredictor {
+    #predictFutureTemp(numOfDays, isMax): double[]
+}
+
+class FileManager {
+    -fileName: String
+    -oldMaxTemp: double[]
+    -oldMinTemp: double[]
+}
+
+FileManager o-- Controller
+Controller o-- GenericPredictor
+
+@enduml
