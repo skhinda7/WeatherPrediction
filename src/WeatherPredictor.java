@@ -1,9 +1,11 @@
 import java.util.Scanner;
+
 // Hello World
 public class WeatherPredictor {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
+        // This is also another test.
         // Get the last 5 days' maximum and minimum temperatures from the user
         double[] maxTemperatures = new double[5];
         double[] minTemperatures = new double[5];
