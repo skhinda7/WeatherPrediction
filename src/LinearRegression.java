@@ -1,17 +1,13 @@
 import java.text.*;
 
-public class testLinear {
-    public double[] earlyData = { 10.4, 8.7, 7.3, 5.4, 1, 34, 54, 64, 6, 10.5, 2, 4, 5, 2 };
+public class LinearRegression extends GenericPredictor {
+    public double[] earlyDataMax = { 77, 77, 77, 78, 78, 78, 79, 79, 79, 80, 80, 80, 80 };
+    public double[] earlyDataMin = { 1, 3, 4, 1.2, .5, 33, 53, 60, 3.4, 9.5, 1.3, 2.3, 4.9, 1.5 };
+    DecimalFormat df = new DecimalFormat("#.##");
 
     // x is the day, y is the temperature.
-    public static void main(String[] args) {
-        testLinear test = new testLinear();
 
-        test.predict();
-    }
-
-    public void predict() {
-        DecimalFormat df = new DecimalFormat("#.##");
+    public void predict(double[] earlyData) {
         double length = earlyData.length;
         double[] xSquared = new double[(int) length];
         double[] ySquared = new double[(int) length];

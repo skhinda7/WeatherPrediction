@@ -2,7 +2,7 @@
 
 class Controller {
     +main(String[] args): void
-    +readFromFile(): 
+    +fileRead(): void
 }
 
 class GenericPredictor {
@@ -19,14 +19,14 @@ class DecisionTreePredictor extends GenericPredictor {
     #predictFutureTemp(numOfDays, isMax): double[]
 }
 
-class FileManager {
+class FileRead {
     -fileName: String
     -oldMaxTemp: double[]
     -oldMinTemp: double[]
     -testMethod(): void
 }
 
-FileManager o-- Controller
+FileRead *-- Controller
 Controller o-- GenericPredictor
 
 @enduml
