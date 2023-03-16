@@ -3,22 +3,26 @@
 class Controller {
     +main(String[] args): void
     +fileRead(): void
+    +averagePrediction(double[], double[]): void
 }
 
 class GenericPredictor {
-    -oldMinTemp: double[]
-    -oldMaxTemp: double[]
-    #predictFutureTemp(numOfDays, isMax): double[]
+    -newData: double[]
+    #train(): void
+    #predict(): double[]
 }
 
-class LinearRegressionPredictor extends GenericPredictor {
-    #predictFutureTemp(numOfDays, isMax): double[]
+class LinearRegression extends GenericPredictor {
+    -slope: double
+    -intercept: double
+    #train(): void 
+    #predict(): double[]
 }
 
-class DecisionTreePredictor extends GenericPredictor {
-    #predictFutureTemp(numOfDays, isMax): double[]
+class MovingAverage extends GenericPredictor {
+    #train(): void 
+    #predict(): double[]
 }
-
 class FileRead {
     -fileName: String
     -oldMaxTemp: double[]
@@ -27,6 +31,6 @@ class FileRead {
 }
 
 FileRead *-- Controller
-Controller o-- GenericPredictor
+Controller *-- GenericPredictor
 
 @enduml
