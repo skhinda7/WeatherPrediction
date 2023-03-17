@@ -17,7 +17,7 @@ public class LinearRegression extends GenericPredictor {
         double sigmaXSquared = 0;
         double slope = 0;
         double intercept = 0;
-        double[] predictedData = new double[(int) length];
+        predictedData = new double[(int) length];
 
         for (int i = 0; i < earlyData.length; i++) {
             xSquared[i] = Math.pow((i + 1), 2);
