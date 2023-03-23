@@ -1,0 +1,52 @@
+@startuml "Prediction Model"
+
+class Controller {
+    -newMaxData: double[]
+    -newMinData: double[]
+    +main(String[] args): void
+    -readTemp(): void
+    -readData(): void
+    -writeToFile(): void
+    -minMaxAverage(double[], double[]): void
+    -
+}
+
+class GenericPredictor {
+    #inputData: double[]
+    #predictedData: double[]
+    #train(): void
+    #predict(): double[]
+}
+class LinearRegression extends GenericPredictor {
+    -slope: double
+    -intercept: double
+    #train(): void 
+    #predict(): double[]
+}
+
+class DoubleMovingAvg extends GenericPredictor {
+    -maOne: double
+    -maTwo: double
+    #train(): void 
+    #predict(): double[]
+}
+class FileManager {
+    -fileName: String
+    -fileReadData: double[]
+    -readTemp(boolean minOrMax): double[]
+    -readData(): double[]
+    -writeToFile(): void
+}
+
+class AverageCalc  {
+    -sum: double
+    -average: double
+    -calculateAverage(double[], double[]): void
+}
+
+Controller *-- FileManager
+Controller *-- GenericPredictor
+Controller *-- AverageCalc
+DoubleMovingAvg *-- AverageCalc
+
+@enduml
