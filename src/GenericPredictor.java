@@ -18,12 +18,35 @@ public class GenericPredictor {
     protected double[] inputData;
     protected double[] predictedData;
 
+    public GenericPredictor(double[] inputData, double[] predictedData) {
+        this.inputData = inputData;
+        this.predictedData = predictedData;
+    }
+
     protected void train() {
 
     }
 
     protected double[] predict() {
         return predictedData;
+    }
+
+    // Getters and Setters
+
+    public double[] getInputData() {
+        return this.inputData;
+    }
+
+    public void setInputData(double[] inputData) {
+        this.inputData = inputData;
+    }
+
+    public double[] getPredictedData() {
+        return this.predictedData;
+    }
+
+    public void setPredictedData(double[] predictedData) {
+        this.predictedData = predictedData;
     }
 
 }

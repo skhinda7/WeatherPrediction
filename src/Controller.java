@@ -41,4 +41,22 @@ public class Controller {
     private void minMaxAverage(double[] LRData, double[] DMData) {
 
     }
+
+    // Getters and Setters
+
+    public double[] getNewMaxData() {
+        return this.newMaxData;
+    }
+
+    public void setNewMaxData(double[] newMaxData) {
+        this.newMaxData = newMaxData;
+    }
+
+    public double[] getNewMinData() {
+        return this.newMinData;
+    }
+
+    public void setNewMinData(double[] newMinData) {
+        this.newMinData = newMinData;
+    }
 }

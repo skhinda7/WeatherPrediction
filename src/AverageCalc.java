@@ -30,4 +30,21 @@ public class AverageCalc {
 
         return average;
     }
+
+    // Getters and Setters
+    public double getSum() {
+        return this.sum;
+    }
+
+    public void setSum(double sum) {
+        this.sum = sum;
+    }
+
+    public double[] getAverage() {
+        return this.average;
+    }
+
+    public void setAverage(double[] average) {
+        this.average = average;
+    }
 }

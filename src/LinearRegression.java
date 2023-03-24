@@ -22,6 +22,12 @@ public class LinearRegression extends GenericPredictor {
     private double intercept;
     DecimalFormat df = new DecimalFormat("#.##");
 
+    public LinearRegression(double[] inputData, double[] predictedData) {
+        super(inputData, predictedData);
+        slope = getSlope();
+        intercept = getIntercept();
+    }
+
     protected void train() {
 
     }
@@ -30,6 +36,24 @@ public class LinearRegression extends GenericPredictor {
 
         return predictedData;
 
+    }
+
+    // Getters and Setters
+
+    public double getSlope() {
+        return this.slope;
+    }
+
+    public void setSlope(double slope) {
+        this.slope = slope;
+    }
+
+    public double getIntercept() {
+        return this.intercept;
+    }
+
+    public void setIntercept(double intercept) {
+        this.intercept = intercept;
     }
 
 }

@@ -33,4 +33,23 @@ public class FileManager {
     private void writeData(double[] data) {
 
     }
+
+    // Getters and Setters
+
+    public String getFileName() {
+        return this.fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public double[] getFileReadData() {
+        return this.fileReadData;
+    }
+
+    public void setFileReadData(double[] fileReadData) {
+        this.fileReadData = fileReadData;
+    }
+
 }

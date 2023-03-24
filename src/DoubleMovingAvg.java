@@ -19,6 +19,10 @@ public class DoubleMovingAvg extends GenericPredictor {
     private double maOne;
     private double maTwo;
 
+    public DoubleMovingAvg(double[] inputData, double[] predictedData) {
+        super(inputData, predictedData);
+    }
+
     protected void train() {
 
     }
@@ -40,4 +44,23 @@ public class DoubleMovingAvg extends GenericPredictor {
 
         return predictedData;
     }
+
+    // Getters and Setters
+
+    public double getMaOne() {
+        return this.maOne;
+    }
+
+    public void setMaOne(double maOne) {
+        this.maOne = maOne;
+    }
+
+    public double getMaTwo() {
+        return this.maTwo;
+    }
+
+    public void setMaTwo(double maTwo) {
+        this.maTwo = maTwo;
+    }
+
 }
