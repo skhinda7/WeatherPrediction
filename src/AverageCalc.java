@@ -19,6 +19,14 @@ public class AverageCalc {
     private double[] average;
 
     private double[] calculateAverage(double[] LRData, double[] DMData) {
+        double dataSum;
+        average = new double[LRData.length];
+
+        for (int i = 0; i < LRData.length; i++) {
+            dataSum = LRData[i] + DMData[i];
+
+            average[i] = dataSum / 2;
+        }
 
         return average;
     }
