@@ -33,9 +33,9 @@ class DoubleMovingAvg extends GenericPredictor {
 class FileManager {
     -fileName: String
     -fileReadData: double[]
-    -readTemp(boolean minOrMax): double[]
+    -readTemp(boolean dataIsMin): double[]
     -readData(): double[]
-    -writeToFile(): void
+    -writeToFile(double[]): void
 }
 
 class AverageCalc  {
