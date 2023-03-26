@@ -21,17 +21,21 @@
 public class Controller {
     private double[] newMaxData;
     private double[] newMinData;
+    FileManager file = new FileManager();
 
     public static void main(String[] args) {
+        Controller control = new Controller();
         System.out.println("Hello World!");
+
+        control.readData();
     }
 
     private void readTemp() {
 
     }
 
-    private void readData() {
-
+    public void readData() {
+        file.readData();
     }
 
     private void writeToFile() {
