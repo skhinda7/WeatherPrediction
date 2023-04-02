@@ -32,32 +32,21 @@ public class FileManager {
         return fileReadData;
     }
 
-    public String[] readData() {
-        String[] currentRowColumns = { "null" };
+    public void readData() {
         try {
             FileReader fr = new FileReader(input);
             BufferedReader br = new BufferedReader(fr);
 
-            String row;
-
-            row = br.readLine();
+            String row = br.readLine();
             System.out.println(row);
 
             while ((row = br.readLine()) != null) {
-                int numOfCol = 3;
-
-                currentRowColumns = row.split(",", numOfCol);
-
-                String day = currentRowColumns[0];
-                String minTemp = currentRowColumns[1];
-                String maxTemp = currentRowColumns[2];
-                System.out.println(
-                        "Day: " + day + "| Min: " + minTemp + "| Max: " + maxTemp);
+                String[] readData = row.split(",", 3);
+                System.out.println("Day: " + readData[0] + "| Min: " + readData[1] + "| Max: " + readData[2]);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return currentRowColumns;
     }
 
     private void writeData(double[] data) {

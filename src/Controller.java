@@ -25,7 +25,6 @@ public class Controller {
 
     public static void main(String[] args) {
         Controller control = new Controller();
-        System.out.println("Hello World!");
 
         control.readData();
     }
