@@ -10,41 +10,49 @@
 //			-sum: double
 //	        -average: double
 // 
-// Methods: -calculateAverage(double[], double[]): double[]
+// Methods: +averageOfPrediction(ArrayList<double>, ArrayList<double>): ArrayList<double>
+//	        +calcAverage(double, double): double
+//          +averageOfList(ArrayList<double>): double
 //
 //*********************************************************
 
+import java.util.ArrayList;
+
 public class AverageCalc {
-    private double sum;
-    private double[] average;
+    ArrayList<Double> averageData = new ArrayList<Double>();
 
-    private double[] calculateAverage(double[] LRData, double[] DMData) {
-        double dataSum;
-        average = new double[LRData.length];
+    public ArrayList<Double> averageOfPrediction(ArrayList<Double> lrData, ArrayList<Double> dmaData) {
+        double dayAverage;
 
-        for (int i = 0; i < LRData.length; i++) {
-            dataSum = LRData[i] + DMData[i];
-
-            average[i] = dataSum / 2;
+        for (int i = 0; i < lrData.size(); i++) {
+            dayAverage = calcAverage(lrData.get(i), dmaData.get(i));
+            averageData.add(dayAverage);
         }
 
-        return average;
+        return averageData;
+    }
+
+    public double calcAverage(double dataOne, double dataTwo) {
+        return (dataOne + dataTwo) / 2;
+    }
+
+    public double averageOfList(ArrayList<Double> data) {
+        double dataSum = 0;
+        for (int i = 0; i < data.size(); i++) {
+            dataSum += data.get(i);
+        }
+
+        return (dataSum / data.size());
     }
 
     // Getters and Setters
-    public double getSum() {
-        return this.sum;
+
+    public ArrayList<Double> getAverageData() {
+        return this.averageData;
     }
 
-    public void setSum(double sum) {
-        this.sum = sum;
+    public void setAverageData(ArrayList<Double> averageData) {
+        this.averageData = averageData;
     }
 
-    public double[] getAverage() {
-        return this.average;
-    }
-
-    public void setAverage(double[] average) {
-        this.average = average;
-    }
 }

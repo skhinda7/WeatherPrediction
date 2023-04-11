@@ -8,7 +8,6 @@ class Controller {
     -readData(): void
     -writeToFile(): void
     -minMaxAverage(double[], double[]): void
-    -
 }
 
 class GenericPredictor {
@@ -39,13 +38,14 @@ class FileManager {
 }
 
 class AverageCalc  {
-    -sum: double
-    -average: double
-    -calculateAverage(double[], double[]): void
+    -averageData: ArrayList<Double>
+    +averageOfPrediction(ArrayList<Double>, ArrayList<Double>): ArrayList<Double>
+    +calcAverage(double, double): double
+    +averageOfList(ArrayList<Double>): double
 }
 
 Controller *-- FileManager
-Controller *-- GenericPredictor
+Controller o-- GenericPredictor
 Controller *-- AverageCalc
 DoubleMovingAvg *-- AverageCalc
 

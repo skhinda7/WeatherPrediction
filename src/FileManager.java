@@ -1,4 +1,3 @@
-
 //*********************************************************
 // Class: FileManager
 // Author: Simardeep Khinda
@@ -21,15 +20,32 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.ArrayList;
 
 public class FileManager {
     private String fileName;
     private File input = new File("input.csv");
-    private double[] fileReadData;
 
-    private double[] readTemp(boolean dataIsMin) {
+    public ArrayList<Double> readTemp(int lineCount) {
+        ArrayList<Double> temp = new ArrayList<Double>();
 
-        return fileReadData;
+        String line;
+
+        try {
+            FileReader fr = new FileReader(input);
+            BufferedReader br = new BufferedReader(fr);
+
+            br.readLine();
+
+            while ((line = br.readLine()) != null) {
+                String[] values = line.split(",");
+                temp.add(Double.parseDouble(values[lineCount]));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return temp;
     }
 
     public void readData() {
@@ -62,13 +78,4 @@ public class FileManager {
     public void setFileName(String fileName) {
         this.fileName = fileName;
     }
-
-    public double[] getFileReadData() {
-        return this.fileReadData;
-    }
-
-    public void setFileReadData(double[] fileReadData) {
-        this.fileReadData = fileReadData;
-    }
-
 }

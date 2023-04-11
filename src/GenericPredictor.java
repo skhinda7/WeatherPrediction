@@ -6,47 +6,48 @@
 //
 // Purpose: GenericPredictor is used as a base class for other prediction models. It is not called.
 // Attributes: 
-//			#inputData: double[]
-//	        #predictedData: double[]
+//			#oldData: ArrayList<Double>
 // 
 // Methods: #train(): void
-//	        #predict(): double[]
+//	        #predict(): ArrayList<Double>
+//          #smallDouble(double): double
 //
 //*********************************************************
 
-public class GenericPredictor {
-    protected double[] inputData;
-    protected double[] predictedData;
+import java.util.ArrayList;
+import java.text.*;
 
-    public GenericPredictor(double[] inputData, double[] predictedData) {
-        this.inputData = inputData;
-        this.predictedData = predictedData;
+public class GenericPredictor {
+    protected ArrayList<Double> oldData = new ArrayList<Double>();
+    DecimalFormat df = new DecimalFormat("#.##");
+
+
+    public GenericPredictor(ArrayList<Double> oldData) {
+        this.oldData = oldData;
     }
 
     protected void train() {
 
     }
 
-    protected double[] predict() {
+    protected ArrayList<Double> predict() {
+        ArrayList<Double> predictedData = new ArrayList<Double>();
+
         return predictedData;
+    }
+
+    protected double smallDouble(double data) {
+        return Double.parseDouble(df.format(data));
     }
 
     // Getters and Setters
 
-    public double[] getInputData() {
-        return this.inputData;
+    public ArrayList<Double> getOldData() {
+        return this.oldData;
     }
 
-    public void setInputData(double[] inputData) {
-        this.inputData = inputData;
-    }
-
-    public double[] getPredictedData() {
-        return this.predictedData;
-    }
-
-    public void setPredictedData(double[] predictedData) {
-        this.predictedData = predictedData;
+    public void setOldData(ArrayList<Double> oldData) {
+        this.oldData = oldData;
     }
 
 }
