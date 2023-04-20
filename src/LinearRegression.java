@@ -27,15 +27,17 @@ public class LinearRegression extends GenericPredictor {
     }
 
     protected void train() {
-        double n = oldData.size();
+        smoothData = avg.movingAverage(oldData);
+        System.out.println("Smoothened Data: " + smoothData);        
+        double n = smoothData.size();
         double sigmaXY = 0;
         double sigmaX = 0;
         double sigmaY = 0;
         double sigmaXsquared = 0;
         for (int i = 0; i < n; i++) {
-            sigmaXY += (i * oldData.get(i)); // sigmaXY
+            sigmaXY += (i * smoothData.get(i)); // sigmaXY
             sigmaX += i;
-            sigmaY += oldData.get(i);
+            sigmaY += smoothData.get(i);
             sigmaXsquared += (Math.pow(i, 2));
         }
         slope = ((n * sigmaXY) - (sigmaX * sigmaY)) / (n * sigmaXsquared - Math.pow(sigmaX, 2));
@@ -43,18 +45,16 @@ public class LinearRegression extends GenericPredictor {
     }
 
     public ArrayList<Double> predict() {
-        System.out.println("LR Data: " + oldData);
         train();
-        int dayCount = oldData.size();
+        int dayCount = smoothData.size();
         double data = 0;
+        
         ArrayList<Double> predictedData = new ArrayList<Double>();
 
         for (int i = dayCount; i < dayCount + 10; i++) {
             data = (slope * i) + intercept;
             predictedData.add(super.smallDouble(data));
         }
-
-        System.out.println("Predicted data using LR: " + predictedData);
 
         return predictedData;
     }

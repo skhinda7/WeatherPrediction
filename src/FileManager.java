@@ -7,12 +7,11 @@
 // Purpose: FileManager is responsible for reading and writing to and from a file.
 //
 // Attributes: 
-//			-fileName: String
-//          -fileReadData: double[]
+//			-names: String[]
 // 
-// Methods: -readTemp(boolean dataIsMin): double[]
-//          -readData(): double[]
-//          -writeData(): void
+// Methods: +names(): String[]
+//          +readData(int): ArrayList<Double>
+//          +writeData(ArrayList<Double>): void
 //
 //*********************************************************
 import java.io.BufferedReader;
@@ -23,10 +22,25 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 
 public class FileManager {
-    private String fileName;
-    private File input = new File("input.csv");
+    File input = new File("input.csv");
+    public String[] names;
 
-    public ArrayList<Double> readTemp(int lineCount) {
+    public String[] names() {
+        try {
+            FileReader fr = new FileReader(input);
+            BufferedReader br = new BufferedReader(fr);
+
+            String header = br.readLine();
+            names = header.split(",");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return names;
+    }
+    
+    public ArrayList<Double> readData(int lineCount) {
+        
         ArrayList<Double> temp = new ArrayList<Double>();
 
         String line;
@@ -34,7 +48,7 @@ public class FileManager {
         try {
             FileReader fr = new FileReader(input);
             BufferedReader br = new BufferedReader(fr);
-
+            
             br.readLine();
 
             while ((line = br.readLine()) != null) {
@@ -48,34 +62,34 @@ public class FileManager {
         return temp;
     }
 
-    public void readData() {
+    public void writeData(ArrayList<Double> data) {
+        File output = new File("prediction.txt");
         try {
-            FileReader fr = new FileReader(input);
-            BufferedReader br = new BufferedReader(fr);
+            FileWriter fw = new FileWriter(output);
+            BufferedWriter bw = new BufferedWriter(fw);
 
-            String row = br.readLine();
-            System.out.println(row);
-
-            while ((row = br.readLine()) != null) {
-                String[] readData = row.split(",", 3);
-                System.out.println("Day: " + readData[0] + "| Min: " + readData[1] + "| Max: " + readData[2]);
-            }
+            bw.write("Hi");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    private void writeData(double[] data) {
-
-    }
-
     // Getters and Setters
 
-    public String getFileName() {
-        return this.fileName;
+    public File getInput() {
+        return this.input;
     }
 
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
+    public void setInput(File input) {
+        this.input = input;
     }
+
+    public String[] getNames() {
+        return this.names;
+    }
+
+    public void setNames(String[] names) {
+        this.names = names;
+    }
+    
 }

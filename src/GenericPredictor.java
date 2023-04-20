@@ -7,6 +7,7 @@
 // Purpose: GenericPredictor is used as a base class for other prediction models. It is not called.
 // Attributes: 
 //			#oldData: ArrayList<Double>
+//          #smoothData: ArrayList<Double>
 // 
 // Methods: #train(): void
 //	        #predict(): ArrayList<Double>
@@ -19,6 +20,8 @@ import java.text.*;
 
 public class GenericPredictor {
     protected ArrayList<Double> oldData = new ArrayList<Double>();
+    ArrayList<Double> smoothData = new ArrayList<Double>();
+    AverageCalc avg = new AverageCalc();
     DecimalFormat df = new DecimalFormat("#.##");
 
 

@@ -7,76 +7,125 @@
 // Purpose: Controller class calls other classes and methods to predict the weather data.
 //
 // Attributes: 
-//			+oldMinData: ArrayList<Double>
-//	        +oldMaxData: ArrayList<Double>
+//			+fileData: ArrayList<Double>
+//	        +lrData: ArrayList<Double>
+//          +prData: ArrayList<Double>
 // 
 // Methods: +main(String[] args): void
-//          -readTemp(): void
-//          -readData(): void
+//          -controller(): void
+//          -askUser(): void
+//          -readHeader(): void
+//          -readFile(): void
+//          -predictData(ArrayList<Double>): void
+//          -average(): ArrayList<Double>
 //          -writeToFile(): void
-//          -minMaxAverage(double[], double[]): void
+//          -createGraph(): void
 //
 //*********************************************************
 
-/*
- * 1,30,40
-2,32,45
-3,29,37
-4,30,42
-5,35,49
-6,40,50
-7,35,51
- */
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Controller {
-    ArrayList<Double> oldMinData = new ArrayList<Double>();
-    ArrayList<Double> oldMaxData = new ArrayList<Double>();
+    ArrayList<Double> fileData = new ArrayList<Double>();
+    ArrayList<Double> lrData = new ArrayList<Double>();
+    ArrayList<Double> prData = new ArrayList<Double>();
+
+
     FileManager file = new FileManager();
 
     public static void main(String[] args) {
         Controller control = new Controller();
-        control.readTemp();
-        GenericPredictor prMin = new PolynomialRegression(control.oldMinData);
-        GenericPredictor prMax = new PolynomialRegression(control.oldMaxData);
-        GenericPredictor lrMin = new LinearRegression(control.oldMinData);
-        GenericPredictor lrMax = new LinearRegression(control.oldMaxData);
-
-        prMin.predict();
-        prMax.predict();
-        lrMin.predict();
-        lrMax.predict();
+        control.controller();
     }
 
-    private void readTemp() {
-        oldMinData = file.readTemp(1);
-        oldMaxData = file.readTemp(2);
+    private void controller() {
+        readHeader();
+        askUser();
+        predictData(fileData);
+        createGraph();
+    }
+    private void askUser() {
+        Scanner in = new Scanner(System.in);
+        String[] menu = file.getNames();
 
-        System.out.println("Minimum: " + oldMinData);
-        System.out.println("Maximum: " + oldMaxData);
+        System.out.println("Please enter the data you would like to predict using the list below: ");
+        
+        for( int i = 0; i < menu.length; i++) {
+            System.out.println ((i + 1) + " | " + menu[i]);
+        }
+        
+        int selection = in.nextInt() - 1;
+        readFile(selection);
     }
 
-    public void readData() {
-        file.readData();
+    private void readHeader() {
+        file.names();
+    }
+
+    private void readFile(int index) {
+        fileData = file.readData(index);
+
+        System.out.println("\nData that was read: " + fileData);
+    }
+
+    private void predictData(ArrayList<Double> data) {
+        
+        GenericPredictor pr = new PolynomialRegression(data);
+        GenericPredictor lr = new LinearRegression(data);
+
+        System.out.println("\nPredicting the data using LR and PR...");
+
+        prData = pr.predict();
+        lrData = lr.predict();
+
+        System.out.println("\nPR: " + prData);
+        System.out.println("LR: " + lrData);
+        System.out.println("Average: " + average());
+
+        writeToFile();
+
+    }
+
+    private ArrayList<Double> average() {
+        AverageCalc avg = new AverageCalc();
+
+        return avg.averageOfPrediction(prData, lrData);
     }
 
     private void writeToFile() {
-
     }
 
-    private void minMaxAverage(ArrayList<Double> LRData, ArrayList<Double> DMData) {
+    private void createGraph() {
+        ArrayList<Double> avg = average();
+        System.out.println("\nOld Data: - | LR Data: + | PR Data: * | Average Data: = \n");
+        for(int i = 0; i < fileData.size(); i++) {
+            System.out.print("Old | Day: " + (i+1) + " | ");
+            for(int j = 0; j < fileData.get(i) / 2; j++) {
+                System.out.print("-");
+            }
+            System.out.print("\n");
+        }
 
+        for(int i = 0; i < lrData.size(); i++) {
+            System.out.print("LR  | Day: " + (lrData.size() + (i + 1)) + " | ");
+            for(int j = 0; j < lrData.get(i) / 2; j++) {
+                System.out.print("+");
+            }
+            System.out.print("\n");
+            System.out.print("PR  | Day: " + (prData.size() + (i + 1)) + " | ");
+            for(int j = 0; j < prData.get(i) / 2; j++) {
+                System.out.print("*");
+            }
+            System.out.print("\n");
+            System.out.print("AVG | Day: " + (avg.size() + (i + 1)) + " | ");
+            for(int k = 0; k < avg.get(i) / 2; k++) {
+                System.out.print("=");
+            }
+            System.out.print("\n");
+        }
     }
-
     // Getters and Setters
-
-    public ArrayList<Double> getOldMinData() {
-        return this.oldMinData;
-    }
-
-    public void setOldMinData(ArrayList<Double> oldMinData) {
-        this.oldMinData = oldMinData;
-    }
 
     public FileManager getFile() {
         return this.file;

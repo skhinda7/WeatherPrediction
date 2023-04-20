@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4a38da5f-7ce0-4104-afbc-e827088169b4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/CS225_Khinda_P2.2_AgileTrackingSheet.docx" beforeDir="false" afterPath="$PROJECT_DIR$/CS225_Khinda_P2.2_AgileTrackingSheet.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CS225_Khinda_P4_ReqTestDoc.docx" beforeDir="false" afterPath="$PROJECT_DIR$/CS225_Khinda_P4_ReqTestDoc.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Prediction.puml" beforeDir="false" afterPath="$PROJECT_DIR$/Prediction.puml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/AverageCalc.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/AverageCalc.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/FileManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/FileManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/GenericPredictor.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/GenericPredictor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/LinearRegression.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/LinearRegression.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/PolynomialRegression.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/PolynomialRegression.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/input.csv" beforeDir="false" afterPath="$PROJECT_DIR$/input.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AverageCalc.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AverageCalc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GenericPredictor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GenericPredictor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LinearRegression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LinearRegression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PolynomialRegression.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PolynomialRegression.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2OccXSFG9owfYh6LC9GUsyVgKtL" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "/Users/simarkhinda/Documents/CS 225/WeatherPrediction"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4a38da5f-7ce0-4104-afbc-e827088169b4" name="Changes" comment="" />
+      <created>1681863349772</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1681863349772</updated>
+    </task>
+    <servers />
+  </component>
+</project>
