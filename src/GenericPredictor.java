@@ -2,7 +2,7 @@
 // Class: GenericPredictor
 // Author: Simardeep Khinda
 // Created: 03/21/2023
-// Modified: 
+// Modified:
 //
 // Purpose: GenericPredictor is used as a base class for other prediction models. It is not called.
 // Attributes: 
@@ -20,25 +20,28 @@ import java.text.*;
 
 public class GenericPredictor {
     protected ArrayList<Double> oldData = new ArrayList<Double>();
-    ArrayList<Double> smoothData = new ArrayList<Double>();
-    AverageCalc avg = new AverageCalc();
-    DecimalFormat df = new DecimalFormat("#.##");
+    protected ArrayList<Double> smoothData = new ArrayList<Double>();
+    protected AverageCalc avg = new AverageCalc();
+    private DecimalFormat df = new DecimalFormat("#.##");
 
 
     public GenericPredictor(ArrayList<Double> oldData) {
         this.oldData = oldData;
     }
 
+    // The train() method is initialized.
     protected void train() {
 
     }
 
+    // The predict() method is initialized.
     protected ArrayList<Double> predict() {
         ArrayList<Double> predictedData = new ArrayList<Double>();
 
         return predictedData;
     }
 
+    // This method returns a double with only two decimal places from the passed double value.
     protected double smallDouble(double data) {
         return Double.parseDouble(df.format(data));
     }

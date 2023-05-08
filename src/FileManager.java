@@ -8,10 +8,11 @@
 //
 // Attributes: 
 //			-names: String[]
+//          -input: File
 // 
 // Methods: +names(): String[]
 //          +readData(int): ArrayList<Double>
-//          +writeData(ArrayList<Double>): void
+//          +writeData(ArrayList<Double>, ArrayList<Double>, ArrayList<Double>, ArrayList<Double>): void
 //
 //*********************************************************
 import java.io.BufferedReader;
@@ -22,10 +23,11 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 
 public class FileManager {
-    File input = new File("input.csv");
+    private File input = new File("input.csv");
     public String[] names;
 
     public String[] names() {
+        // Method reads the header of the CSV file and stores the names as choices for what can be predicted.
         try {
             FileReader fr = new FileReader(input);
             BufferedReader br = new BufferedReader(fr);
@@ -45,6 +47,7 @@ public class FileManager {
 
         String line;
 
+        // The data is stored in an ArrayList.
         try {
             FileReader fr = new FileReader(input);
             BufferedReader br = new BufferedReader(fr);
@@ -62,17 +65,29 @@ public class FileManager {
         return temp;
     }
 
-    public void writeData(ArrayList<Double> data) {
-        File output = new File("prediction.txt");
-        try {
-            FileWriter fw = new FileWriter(output);
-            BufferedWriter bw = new BufferedWriter(fw);
+    public void writeData(ArrayList<Double> oldData, ArrayList<Double> lrData, ArrayList<Double> prData, ArrayList<Double> avgData) {
+    File output = new File("prediction.txt");
+    
+    // The passed data is written to prediction.txt.
+    try {
+        FileWriter fw = new FileWriter(output);
+        BufferedWriter bw = new BufferedWriter(fw);
+        
+        for(int i = 0; i < oldData.size(); i++) {
+            bw.write("Day: " + (i + 1) + " | " + oldData.get(i));
+            bw.newLine();
+        }
 
-            bw.write("Hi");
+        for(int i = 0; i < lrData.size(); i++) {
+            bw.write("Day: " + ((i + 1) + oldData.size()) + " | LR: " + lrData.get(i) + " | PR: " + prData.get(i) + " | AVG: " + avgData.get(i));
+            bw.newLine();
+        }
+            bw.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
 
     // Getters and Setters
 
